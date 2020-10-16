@@ -1,48 +1,75 @@
 ﻿@model WebOlimpiada.DatosRepositorio.Modelos.Usuario
 
 @{
-    ViewBag.Title = "Login";
+    Layout = null;
 }
 
-<h2>Login</h2>
+<!DOCTYPE html>
 
-@using (Html.BeginForm("Login", "Home", FormMethod.Post))
-{
-    <fieldset>
-        <legend>Sede de Olimpiadas</legend>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inicio de Sesion</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
 
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-        @if (@ViewBag.Message != null)
-        {
-            <div style="border: 1px solid red">
-                @ViewBag.Message
-            </div>
-        }
-        <table>
-            <tr>
-                <td>@Html.LabelFor(a => a.Codigo)</td>
-                <td>@Html.TextBoxFor(a => a.Codigo)</td>
-                <td>@Html.ValidationMessageFor(a => a.Codigo)</td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(a => a.Password)
-                </td>
-                <td>
-                    @Html.PasswordFor(a => a.Password)
-                </td>
-                <td>
-                    @Html.ValidationMessageFor(a => a.Password)
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" value="Login" />
-                </td>
-                <td></td>
-            </tr>
-        </table>
-    </fieldset>
-} 
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+        </div>
+    </div>
+    <div class="container body-content">
+        <div>
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                <fieldset>
+                    <legend>Sede de Olimpiadas</legend>
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @if (@ViewBag.Message != null)
+                    {
+                        <div style="border: 1px solid red">
+                            @ViewBag.Message
+                        </div>
+                    }
+                    <table>
+                        <tr>
+                            <td>@Html.LabelFor(a => a.Codigo)</td>
+                            <td>@Html.TextBoxFor(a => a.Codigo)</td>
+                            <td>@Html.ValidationMessageFor(a => a.Codigo)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(a => a.Password)
+                            </td>
+                            <td>
+                                @Html.PasswordFor(a => a.Password)
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(a => a.Password)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" value="Login" />
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            }
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+</body>
+</html>

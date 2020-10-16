@@ -6,18 +6,20 @@ using System.Web.Mvc;
 using WebOlimpiada.DatosRepositorio.Modelos;
 using WebOlimpiada.LogicaNegocio.Service;
 using WebOlimpiada.LogicaNegocio.Service.Implementacion;
+
 namespace WebOlimpiada.Controllers
 {
-    public class EventoEquipamentoController : Controller
+    public class EventoComisarioViewController : Controller
     {
-        IEquipamentoService _equipamentoService = new EquipamentoService();
-        
-        // GET: EventoEquipamento
+        IComisarioService _comisarioService = new ComisarioService();
+        // GET: EventoComisarioView
         public ActionResult Index(decimal eventoId)
         {
+            IList<EventoComisario_View> comisariosByEvento = _comisarioService.GetByEventoId(eventoId);
             ViewData["EventoId"] = eventoId;
-            IList<EventoEquipamento_View> equiposPorEvento = _equipamentoService.GetByEventoIdView(eventoId);
-            return View(equiposPorEvento);
+            return View(comisariosByEvento);
         }
+
+        
     }
 }

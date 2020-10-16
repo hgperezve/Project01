@@ -46,6 +46,7 @@
     <Compile Include="Service\IComplejoService.cs" />
     <Compile Include="Service\IDeporteService.cs" />
     <Compile Include="Service\IEquipamentoService.cs" />
+    <Compile Include="Service\IEventoComisarioService.cs" />
     <Compile Include="Service\IEventoEquipamentoService.cs" />
     <Compile Include="Service\IEventoService.cs" />
     <Compile Include="Service\Implementacion\AreaService.cs" />

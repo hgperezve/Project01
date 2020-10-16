@@ -15,17 +15,6 @@ namespace WebOlimpiada.Controllers
         IEquipamentoService _equiposService = new EquipamentoService();
         IEventoService _eventoService = new EventoService();
         private static decimal pEventoId;
-        // GET: EventoEquipos
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: EventoEquipos/Details/5
-        public ActionResult Details(decimal id)
-        {
-            return View();
-        }
 
         // GET: EventoEquipos/Create
         public ActionResult Create(decimal eventoId)

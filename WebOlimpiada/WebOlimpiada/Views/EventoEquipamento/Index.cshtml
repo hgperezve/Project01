@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<WebOlimpiada.DatosRepositorio.Modelos.EventoEquipamento_View>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Equipos";
 }
 
-<h2>Index</h2>
+<h2>Equipos</h2>
 
 <p>
-    @Html.ActionLink("Crear", "Create", "EventoEquipos", new { eventoId = ViewData["EventoId"] }, new { })
+    @Html.ActionLink("Añadir", "Create", "EventoEquipos", new { eventoId = ViewData["EventoId"] }, new { })
 </p>
 <table class="table">
     <tr>

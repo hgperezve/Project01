@@ -18,11 +18,7 @@ namespace WebOlimpiada.LogicaNegocio.Service.Implementacion
             _eventoEquipamentoRepositorio = new EventoEquipamentoRepositorio();
         }
 
-        //public IList<EventoEquipamento> GetAll()
-        //{
-        //    return _eventoEquipamentoRepositorio.FindAll<EventoEquipamento>();
-        //}
-
+ 
         public Evento_Equipamento Create(Evento_Equipamento eventoEquipamento)
         {
             return _eventoEquipamentoRepositorio.Create<Evento_Equipamento>(eventoEquipamento);

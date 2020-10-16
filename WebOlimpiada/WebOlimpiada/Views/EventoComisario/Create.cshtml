@@ -1,0 +1,36 @@
+﻿@model WebOlimpiada.DatosRepositorio.Modelos.Evento_Comisario
+
+@{
+    ViewBag.Title = "Añadir";
+}
+
+<h2>Añadir</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.EventoId)
+    <div class="form-horizontal">
+        <h4>Comisario</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComisarioId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ComisarioId, (SelectList)ViewData["ComisarioLista"], "  ----- Comisarios -----  ")
+                @Html.ValidationMessageFor(model => model.ComisarioId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Añadir" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>

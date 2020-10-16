@@ -41,5 +41,11 @@ namespace WebOlimpiada.LogicaNegocio.Service.Implementacion
         {
             _comisarioRepositorio.Delete<Comisario>(id);
         }
-    }
+
+        public IList<EventoComisario_View> GetByEventoId(decimal eventoId)
+        {
+            return _comisarioRepositorio.FindByEventoId(eventoId);
+        }
+
+   }
 }

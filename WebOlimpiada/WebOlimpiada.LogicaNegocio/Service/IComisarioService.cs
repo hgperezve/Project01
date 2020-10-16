@@ -14,5 +14,6 @@ namespace WebOlimpiada.LogicaNegocio.Service
         Comisario GetById(decimal id);
         Comisario Update(Comisario comisario);
         void Delete(decimal id);
+        IList<EventoComisario_View> GetByEventoId(decimal eventoId);
     }
 }

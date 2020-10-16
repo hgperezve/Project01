@@ -22,7 +22,7 @@ namespace WebOlimpiada.Controllers
         {
             return View();
         }
-
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -46,8 +46,9 @@ namespace WebOlimpiada.Controllers
                 Usuario usuario = _usuarioService.GetByCodigo(objUsuario.Codigo, objUsuario.Password);
                 if (usuario != null)
                 {
+                    Session["CODIGO"] = usuario.Codigo;
+                    Session["NOMBRE"] = usuario.Nombre;
                     return RedirectToAction("Index","SedeOlimpica");
-                    //return Redict
                 }
             }
             return View(objUsuario);

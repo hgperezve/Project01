@@ -97,15 +97,30 @@
           <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'OlimpiadaDB.dbo.EventoComisario_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EventoComisario_View">
+          <Key>
+            <PropertyRef Name="EventoId" />
+            <PropertyRef Name="ComisarioId" />
+          </Key>
+          <Property Name="EventoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ComisarioId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" />
+          <Property Name="Tarea" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'OlimpiadaDB.dbo.EventoEquipamento_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="EventoEquipamento_View">
           <Key>
+            
             <PropertyRef Name="EventoId" />
+            
+            
           </Key>
-          <Property Name="EquipamentoId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EquipamentoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="EventoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Nombre" Type="nchar" MaxLength="10" />
-          <Property Name="Cantidad" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Cantidad" Type="numeric" Precision="3" Scale="0" Nullable="false" />
         </EntityType>
         <EntityContainer Name="OlimpiadaDBModelStoreContainer">
           <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
@@ -118,6 +133,14 @@ warning 6002: The table/view 'OlimpiadaDB.dbo.EventoEquipamento_View' does not h
           <EntitySet Name="Evento_Equipamento" EntityType="Self.Evento_Equipamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SedeOlimpica" EntityType="Self.SedeOlimpica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventoComisario_View" EntityType="Self.EventoComisario_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EventoComisario_View].[EventoId] AS [EventoId], 
+    [EventoComisario_View].[ComisarioId] AS [ComisarioId], 
+    [EventoComisario_View].[Nombre] AS [Nombre], 
+    [EventoComisario_View].[Tarea] AS [Tarea]
+    FROM [dbo].[EventoComisario_View] AS [EventoComisario_View]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="EventoEquipamento_View" EntityType="Self.EventoEquipamento_View" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [EventoEquipamento_View].[EquipamentoId] AS [EquipamentoId], 
@@ -160,6 +183,7 @@ warning 6002: The table/view 'OlimpiadaDB.dbo.EventoEquipamento_View' does not h
           <EntitySet Name="Equipamento" EntityType="OlimpiadaDBModel.Equipamento" />
           <EntitySet Name="Evento" EntityType="OlimpiadaDBModel.Evento" />
           <EntitySet Name="EventoEquipamento_View" EntityType="OlimpiadaDBModel.EventoEquipamento_View" />
+          <EntitySet Name="EventoComisario_View" EntityType="OlimpiadaDBModel.EventoComisario_View" />
         </EntityContainer>
         <EntityType Name="SedeOlimpica">
           <Key>
@@ -239,10 +263,20 @@ warning 6002: The table/view 'OlimpiadaDB.dbo.EventoEquipamento_View' does not h
           <Key>
             <PropertyRef Name="EventoId" />
           </Key>
-          <Property Name="EquipamentoId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EquipamentoId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="EventoId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Cantidad" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventoComisario_View">
+          <Key>
+            <PropertyRef Name="EventoId" />
+            <PropertyRef Name="ComisarioId" />
+          </Key>
+          <Property Name="EventoId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ComisarioId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Tarea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -356,6 +390,16 @@ warning 6002: The table/view 'OlimpiadaDB.dbo.EventoEquipamento_View' does not h
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="EventoId" ColumnName="EventoId" />
                 <ScalarProperty Name="EquipamentoId" ColumnName="EquipamentoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventoComisario_View">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.EventoComisario_View">
+              <MappingFragment StoreEntitySet="EventoComisario_View">
+                <ScalarProperty Name="Tarea" ColumnName="Tarea" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ComisarioId" ColumnName="ComisarioId" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

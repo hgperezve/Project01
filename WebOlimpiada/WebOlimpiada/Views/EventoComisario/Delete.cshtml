@@ -1,0 +1,35 @@
+﻿@model WebOlimpiada.DatosRepositorio.Modelos.Evento_Comisario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Esta seguro de borrar este elemento?</h3>
+<div>
+    <h4>Comisario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            Comisario
+        </dt>
+
+        <dd>
+            @ViewData["ComisarioNombre"]
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @Html.HiddenFor(model => model.EventoId)
+        @Html.HiddenFor(model => model.ComisarioId)
+        <input type="submit" value="Borrar" class="btn btn-default" /> |
+        @Html.ActionLink("Regresar", "Index", "EventoComisarioView", new { eventoId = ViewData["EventoId"] }, new { })
+    </div>
+    }
+</div>

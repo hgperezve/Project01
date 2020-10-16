@@ -12,11 +12,11 @@ namespace WebOlimpiada.DatosRepositorio.Modelos
     using System;
     using System.Collections.Generic;
     
-    public partial class EventoEquipamento_View
+    public partial class EventoComisario_View
     {
-        public decimal EquipamentoId { get; set; }
         public decimal EventoId { get; set; }
+        public decimal ComisarioId { get; set; }
         public string Nombre { get; set; }
-        public decimal Cantidad { get; set; }
+        public string Tarea { get; set; }
     }
 }

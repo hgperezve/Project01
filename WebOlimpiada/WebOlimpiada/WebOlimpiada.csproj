@@ -159,6 +159,8 @@
     <Compile Include="Controllers\ComplejoController.cs" />
     <Compile Include="Controllers\DeporteController.cs" />
     <Compile Include="Controllers\EquipamentoController.cs" />
+    <Compile Include="Controllers\EventoComisarioController.cs" />
+    <Compile Include="Controllers\EventoComisarioViewController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\EventoEquipamentoController.cs" />
     <Compile Include="Controllers\EventoEquiposController.cs" />
@@ -216,7 +218,6 @@
     <Content Include="Views\SedeOlimpica\Create.cshtml" />
     <Content Include="Views\SedeOlimpica\Edit.cshtml" />
     <Content Include="Views\SedeOlimpica\Delete.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Complejo\Index.cshtml" />
     <Content Include="Views\Complejo\Create.cshtml" />
     <Content Include="Views\Complejo\Edit.cshtml" />
@@ -244,6 +245,10 @@
     <Content Include="Views\EventoEquipos\Create.cshtml" />
     <Content Include="Views\EventoEquipos\Edit.cshtml" />
     <Content Include="Views\EventoEquipos\Delete.cshtml" />
+    <Content Include="Views\EventoComisarioView\Index.cshtml" />
+    <Content Include="Views\EventoComisario\Create.cshtml" />
+    <Content Include="Views\EventoComisario\Delete.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

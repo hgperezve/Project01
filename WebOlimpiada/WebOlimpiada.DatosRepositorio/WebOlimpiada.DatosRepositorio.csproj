@@ -101,6 +101,9 @@
     <Compile Include="Modelos\Evento.cs">
       <DependentUpon>DBOlimpiada.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\EventoComisario_View.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\EventoEquipamento_View.cs">
       <DependentUpon>DBOlimpiada.tt</DependentUpon>
     </Compile>
