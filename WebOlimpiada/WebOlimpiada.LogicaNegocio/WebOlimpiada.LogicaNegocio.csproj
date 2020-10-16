@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63E41DA5-5191-413F-AC27-F3B728DDEBB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebOlimpiada.LogicaNegocio</RootNamespace>
+    <AssemblyName>WebOlimpiada.LogicaNegocio</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IComisarioService.cs" />
+    <Compile Include="Service\IComplejoService.cs" />
+    <Compile Include="Service\IDeporteService.cs" />
+    <Compile Include="Service\IEquipamentoService.cs" />
+    <Compile Include="Service\IEventoEquipamentoService.cs" />
+    <Compile Include="Service\IEventoService.cs" />
+    <Compile Include="Service\Implementacion\AreaService.cs" />
+    <Compile Include="Service\Implementacion\ComisarioService.cs" />
+    <Compile Include="Service\Implementacion\ComplejoService.cs" />
+    <Compile Include="Service\IAreaService.cs" />
+    <Compile Include="Service\Implementacion\DeporteService.cs" />
+    <Compile Include="Service\Implementacion\EquipamentoService.cs" />
+    <Compile Include="Service\Implementacion\EventoComisarioService.cs" />
+    <Compile Include="Service\Implementacion\EventoEquipamentoService.cs" />
+    <Compile Include="Service\Implementacion\EventoService.cs" />
+    <Compile Include="Service\Implementacion\GenericoService.cs" />
+    <Compile Include="Service\Implementacion\SedeOlimpicaService.cs" />
+    <Compile Include="Service\Implementacion\UsuarioService.cs" />
+    <Compile Include="Service\Interface1.cs" />
+    <Compile Include="Service\ISedeOlimpicaService.cs" />
+    <Compile Include="Service\IUsuarioService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WebOlimpiada.DatosRepositorio\WebOlimpiada.DatosRepositorio.csproj">
+      <Project>{1177fc13-f8a0-45a0-a498-d8e378eabfec}</Project>
+      <Name>WebOlimpiada.DatosRepositorio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebOlimpiada.Dominio45\WebOlimpiada.Dominio45.csproj">
+      <Project>{1b80d8fb-ccbb-4942-99bf-3d607a4f20d3}</Project>
+      <Name>WebOlimpiada.Dominio45</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

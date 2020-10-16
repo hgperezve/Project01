@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebOlimpiada.DatosRepositorio.Modelos.Evento>
+
+@{
+    ViewBag.Title = "Eventos";
+}
+
+<h2>Eventos ( @ViewData["AreaNombre"].ToString() )</h2>
+
+<p>
+    @Html.ActionLink("Crear", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroParticipantes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroComisarios)
+        </th>
+        
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroParticipantes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroComisarios)
+        </td>
+        
+        
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id = item.EventoId }) |
+            @Html.ActionLink("Equipamentos", "Index", "EventoEquipamento", new { eventoId = item.EventoId }, new { }) |
+            @Html.ActionLink("Comisarios", "Index", "Comisario", new { id = item.EventoId }, new { }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.EventoId })
+        </td>
+    </tr>
+}
+
+</table>

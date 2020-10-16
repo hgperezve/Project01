@@ -1,0 +1,51 @@
+﻿@model WebOlimpiada.DatosRepositorio.Modelos.Area
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+<h2>Borrar</h2>
+@Html.HiddenFor(model => model.ComplejoId)
+<h3>¿Esta usted seguro de borrar este elemento?</h3>
+<div>
+    <h4>Area</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaOcupada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaOcupada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IndicadorLocalizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndicadorLocalizacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OlimpiadaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ComplejoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AreaOcupada" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IndicadorLocalizacion" Type="nchar" MaxLength="10" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comisario">
+          <Key>
+            <PropertyRef Name="ComisarioId" />
+          </Key>
+          <Property Name="ComisarioId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" />
+          <Property Name="Tarea" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Complejo">
+          <Key>
+            <PropertyRef Name="ComplejoId" />
+          </Key>
+          <Property Name="ComplejoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SedeOlimpicaId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Localizacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="JefeDeOrganizacion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="AreaTotal" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PresupuestoAproximando" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deporte">
+          <Key>
+            <PropertyRef Name="DeporteId" />
+          </Key>
+          <Property Name="DeporteId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Equipamento">
+          <Key>
+            <PropertyRef Name="EquipamentoId" />
+          </Key>
+          <Property Name="EquipamentoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Duracion" Type="time" Precision="7" />
+          <Property Name="NumeroParticipantes" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="NumeroComisarios" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AreaId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DeporteId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Evento_Comisario">
+          <Key>
+            <PropertyRef Name="EventoId" />
+            <PropertyRef Name="ComisarioId" />
+          </Key>
+          <Property Name="EventoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ComisarioId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento_Equipamento">
+          <Key>
+            <PropertyRef Name="EventoId" />
+            <PropertyRef Name="EquipamentoId" />
+          </Key>
+          <Property Name="EventoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="EquipamentoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Cantidad" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SedeOlimpica">
+          <Key>
+            <PropertyRef Name="SedeOlimpicaId" />
+          </Key>
+          <Property Name="SedeOlimpicaId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OlimpiadaDB.dbo.EventoEquipamento_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EventoEquipamento_View">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EquipamentoId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EventoId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="10" />
+          <Property Name="Cantidad" Type="numeric" Precision="3" Scale="0" />
+        </EntityType>
+        <EntityContainer Name="OlimpiadaDBModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comisario" EntityType="Self.Comisario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Complejo" EntityType="Self.Complejo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deporte" EntityType="Self.Deporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipamento" EntityType="Self.Equipamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento_Comisario" EntityType="Self.Evento_Comisario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento_Equipamento" EntityType="Self.Evento_Equipamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SedeOlimpica" EntityType="Self.SedeOlimpica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventoEquipamento_View" EntityType="Self.EventoEquipamento_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EventoEquipamento_View].[EquipamentoId] AS [EquipamentoId], 
+    [EventoEquipamento_View].[EventoId] AS [EventoId], 
+    [EventoEquipamento_View].[Nombre] AS [Nombre], 
+    [EventoEquipamento_View].[Cantidad] AS [Cantidad]
+    FROM [dbo].[EventoEquipamento_View] AS [EventoEquipamento_View]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OlimpiadaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Evento_Comisario">
+          <Key>
+            <PropertyRef Name="EventoId" />
+            <PropertyRef Name="ComisarioId" />
+          </Key>
+          <Property Name="EventoId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ComisarioId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento_Equipamento">
+          <Key>
+            <PropertyRef Name="EventoId" />
+            <PropertyRef Name="EquipamentoId" />
+          </Key>
+          <Property Name="EventoId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="EquipamentoId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="OlimpiadaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Evento_Comisario" EntityType="Self.Evento_Comisario" />
+          <EntitySet Name="Evento_Equipamento" EntityType="Self.Evento_Equipamento" />
+          <EntitySet Name="SedeOlimpica" EntityType="OlimpiadaDBModel.SedeOlimpica" />
+          <EntitySet Name="Usuario" EntityType="OlimpiadaDBModel.Usuario" />
+          <EntitySet Name="Area" EntityType="OlimpiadaDBModel.Area" />
+          <EntitySet Name="Complejo" EntityType="OlimpiadaDBModel.Complejo" />
+          <EntitySet Name="Comisario" EntityType="OlimpiadaDBModel.Comisario" />
+          <EntitySet Name="Deporte" EntityType="OlimpiadaDBModel.Deporte" />
+          <EntitySet Name="Equipamento" EntityType="OlimpiadaDBModel.Equipamento" />
+          <EntitySet Name="Evento" EntityType="OlimpiadaDBModel.Evento" />
+          <EntitySet Name="EventoEquipamento_View" EntityType="OlimpiadaDBModel.EventoEquipamento_View" />
+        </EntityContainer>
+        <EntityType Name="SedeOlimpica">
+          <Key>
+            <PropertyRef Name="SedeOlimpicaId" />
+          </Key>
+          <Property Name="SedeOlimpicaId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ComplejoId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AreaOcupada" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IndicadorLocalizacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Complejo">
+          <Key>
+            <PropertyRef Name="ComplejoId" />
+          </Key>
+          <Property Name="ComplejoId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SedeOlimpicaId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Localizacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JefeDeOrganizacion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AreaTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PresupuestoAproximando" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Comisario">
+          <Key>
+            <PropertyRef Name="ComisarioId" />
+          </Key>
+          <Property Name="ComisarioId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Tarea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Deporte">
+          <Key>
+            <PropertyRef Name="DeporteId" />
+          </Key>
+          <Property Name="DeporteId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Equipamento">
+          <Key>
+            <PropertyRef Name="EquipamentoId" />
+          </Key>
+          <Property Name="EquipamentoId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Duracion" Type="Time" Precision="7" />
+          <Property Name="NumeroParticipantes" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NumeroComisarios" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AreaId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DeporteId" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="EventoEquipamento_View">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EquipamentoId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EventoId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Cantidad" Type="Decimal" Precision="3" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OlimpiadaDBModelStoreContainer" CdmEntityContainer="OlimpiadaDBEntities">
+          <EntitySetMapping Name="Evento_Comisario">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Evento_Comisario">
+              <MappingFragment StoreEntitySet="Evento_Comisario">
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="ComisarioId" ColumnName="ComisarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento_Equipamento">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Evento_Equipamento">
+              <MappingFragment StoreEntitySet="Evento_Equipamento">
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="EquipamentoId" ColumnName="EquipamentoId" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SedeOlimpica">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.SedeOlimpica">
+              <MappingFragment StoreEntitySet="SedeOlimpica">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="SedeOlimpicaId" ColumnName="SedeOlimpicaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IndicadorLocalizacion" ColumnName="IndicadorLocalizacion" />
+                <ScalarProperty Name="AreaOcupada" ColumnName="AreaOcupada" />
+                <ScalarProperty Name="ComplejoId" ColumnName="ComplejoId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complejo">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Complejo">
+              <MappingFragment StoreEntitySet="Complejo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="PresupuestoAproximando" ColumnName="PresupuestoAproximando" />
+                <ScalarProperty Name="AreaTotal" ColumnName="AreaTotal" />
+                <ScalarProperty Name="JefeDeOrganizacion" ColumnName="JefeDeOrganizacion" />
+                <ScalarProperty Name="Localizacion" ColumnName="Localizacion" />
+                <ScalarProperty Name="SedeOlimpicaId" ColumnName="SedeOlimpicaId" />
+                <ScalarProperty Name="ComplejoId" ColumnName="ComplejoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comisario">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Comisario">
+              <MappingFragment StoreEntitySet="Comisario">
+                <ScalarProperty Name="Tarea" ColumnName="Tarea" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ComisarioId" ColumnName="ComisarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deporte">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Deporte">
+              <MappingFragment StoreEntitySet="Deporte">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="DeporteId" ColumnName="DeporteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipamento">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Equipamento">
+              <MappingFragment StoreEntitySet="Equipamento">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="EquipamentoId" ColumnName="EquipamentoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="DeporteId" ColumnName="DeporteId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="NumeroComisarios" ColumnName="NumeroComisarios" />
+                <ScalarProperty Name="NumeroParticipantes" ColumnName="NumeroParticipantes" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventoEquipamento_View">
+            <EntityTypeMapping TypeName="OlimpiadaDBModel.EventoEquipamento_View">
+              <MappingFragment StoreEntitySet="EventoEquipamento_View">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="EquipamentoId" ColumnName="EquipamentoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1177FC13-F8A0-45A0-A498-D8E378EABFEC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebOlimpiada.DatosRepositorio</RootNamespace>
+    <AssemblyName>WebOlimpiada.DatosRepositorio</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Context\AdoNetContext.cs" />
+    <Compile Include="Context\Component\AdoNetUnitOfWork.cs" />
+    <Compile Include="Context\Component\IUnitOfWork.cs" />
+    <Compile Include="DB\DBConection.cs" />
+    <Compile Include="Factory\IConnectionFactory.cs" />
+    <Compile Include="Factory\SqlServerConnectionFactory.cs" />
+    <Compile Include="Implementacion\AreaRepositorio.cs" />
+    <Compile Include="Implementacion\ComisarioRepositorio.cs" />
+    <Compile Include="Implementacion\ComplejoRepositorio.cs" />
+    <Compile Include="Implementacion\DeporteRepositorio.cs" />
+    <Compile Include="Implementacion\EquipamentoRepositorio.cs" />
+    <Compile Include="Implementacion\EventoComisarioRepositorio.cs" />
+    <Compile Include="Implementacion\EventoEquipamentoRepositorio.cs" />
+    <Compile Include="Implementacion\EventoRepositorio.cs" />
+    <Compile Include="Implementacion\GenericoRepositorio.cs" />
+    <Compile Include="Implementacion\SedeOlimpicaRepositorio.cs" />
+    <Compile Include="Implementacion\UsuarioRepositorio.cs" />
+    <Compile Include="Modelos\Area.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Comisario.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Complejo.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\DBOlimpiada.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBOlimpiada.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\DBOlimpiada.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\DBOlimpiada.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBOlimpiada.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Deporte.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Equipamento.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Evento.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\EventoEquipamento_View.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Evento_Comisario.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Evento_Equipamento.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SedeOlimpica.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Usuario.cs">
+      <DependentUpon>DBOlimpiada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebOlimpiada.Dominio45\WebOlimpiada.Dominio45.csproj">
+      <Project>{1b80d8fb-ccbb-4942-99bf-3d607a4f20d3}</Project>
+      <Name>WebOlimpiada.Dominio45</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Modelos\DBOlimpiada.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBOlimpiada.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Modelos\DBOlimpiada.edmx.diagram">
+      <DependentUpon>DBOlimpiada.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modelos\DBOlimpiada.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBOlimpiada.Context.cs</LastGenOutput>
+      <DependentUpon>DBOlimpiada.edmx</DependentUpon>
+    </Content>
+    <Content Include="Modelos\DBOlimpiada.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBOlimpiada.edmx</DependentUpon>
+      <LastGenOutput>DBOlimpiada.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

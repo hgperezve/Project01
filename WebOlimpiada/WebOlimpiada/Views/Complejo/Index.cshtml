@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebOlimpiada.DatosRepositorio.Modelos.Complejo>
+
+@{
+    ViewBag.Title = "Complejos";
+}
+
+<h2>Complejos</h2>
+
+<p>
+    @Html.ActionLink("Crear", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Localizacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JefeDeOrganizacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PresupuestoAproximando)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Localizacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JefeDeOrganizacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PresupuestoAproximando)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.ComplejoId }) |
+            @Html.ActionLink("Areas", "Index", "Area", new { complejoId = item.ComplejoId }, new { }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.ComplejoId })
+        </td>
+    </tr>
+}
+
+</table>

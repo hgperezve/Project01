@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebOlimpiada.DatosRepositorio.Modelos.SedeOlimpica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.SedeOlimpicaId }) |
+            @Html.ActionLink("Complejos", "Index","Complejo",  new { sedeOlimpicaId = item.SedeOlimpicaId }, new { }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.SedeOlimpicaId })
+        </td>
+    </tr>
+}
+
+</table>
