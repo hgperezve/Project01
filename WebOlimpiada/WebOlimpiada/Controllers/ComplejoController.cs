@@ -23,18 +23,14 @@ namespace WebOlimpiada.Controllers
             return View(complejos);
         }
 
-        // GET: Complejo/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         // GET: Complejo/Create
         public ActionResult Create()
         {
             Complejo complejo = new Complejo();
             complejo.SedeOlimpicaId = pSedeOlimpicaId;
-            return View();
+            ViewData["pSedeOlimpicaId"] = pSedeOlimpicaId;
+            return View(complejo);
         }
 
         // POST: Complejo/Create
@@ -63,15 +59,16 @@ namespace WebOlimpiada.Controllers
         }
 
         // GET: Complejo/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(decimal id)
         {
             Complejo complejo = _ComplejoService.GetById(id);
+            ViewData["pSedeOlimpicaId"] = pSedeOlimpicaId;
             return View(complejo);
         }
 
         // POST: Complejo/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(decimal id, FormCollection collection)
         {
             try
             {
@@ -97,6 +94,7 @@ namespace WebOlimpiada.Controllers
         public ActionResult Delete(decimal id)
         {
             Complejo complejo = _ComplejoService.GetById(id);
+            ViewData["pSedeOlimpicaId"] = pSedeOlimpicaId;
             return View(complejo);
         }
 

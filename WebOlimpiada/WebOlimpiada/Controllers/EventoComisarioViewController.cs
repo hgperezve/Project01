@@ -13,10 +13,11 @@ namespace WebOlimpiada.Controllers
     {
         IComisarioService _comisarioService = new ComisarioService();
         // GET: EventoComisarioView
-        public ActionResult Index(decimal eventoId)
+        public ActionResult Index(decimal eventoId, decimal areaId)
         {
             IList<EventoComisario_View> comisariosByEvento = _comisarioService.GetByEventoId(eventoId);
             ViewData["EventoId"] = eventoId;
+            ViewData["AreaId"] = areaId;
             return View(comisariosByEvento);
         }
 

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<WebOlimpiada.DatosRepositorio.Modelos.Area>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Areas";
 }
 
-<h2>Areas (@ViewData["Localizacion"].ToString())</h2>
+<h2>Areas (@ViewData["ComplejoNombre"].ToString())</h2>
 
 <p>
     @{
@@ -54,3 +54,7 @@
 }
 
 </table>
+
+<div>
+    @Html.ActionLink("Regresar", "Index", "Complejo", new { sedeOlimpicaId = ViewData["SedeOlimpicaId"] }, new { })
+</div>

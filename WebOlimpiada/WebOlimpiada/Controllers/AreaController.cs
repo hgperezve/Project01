@@ -35,6 +35,8 @@ namespace WebOlimpiada.Controllers
             ViewData["pComplejoId"] = pComplejoId;
             ViewData["EstaHabilitadoCrear"] = estaHabilitadoCrear;
             ViewData["Localizacion"] = complejo.Localizacion;
+            ViewData["ComplejoNombre"] = complejo.Nombre;
+            ViewData["SedeOlimpicaId"] = complejo.SedeOlimpicaId;
             return View(areas);
         }
 

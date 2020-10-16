@@ -80,7 +80,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <div>
+        @Html.ActionLink("Regresar", "Index", new { sedeOlimpicaId = ViewData["pSedeOlimpicaId"] }, new { })
+    </div>
 </div>
 
 @section Scripts {

@@ -13,9 +13,10 @@ namespace WebOlimpiada.Controllers
         IEquipamentoService _equipamentoService = new EquipamentoService();
         
         // GET: EventoEquipamento
-        public ActionResult Index(decimal eventoId)
+        public ActionResult Index(decimal eventoId, decimal areaId)
         {
             ViewData["EventoId"] = eventoId;
+            ViewData["AreaId"] = areaId;
             IList<EventoEquipamento_View> equiposPorEvento = _equipamentoService.GetByEventoIdView(eventoId);
             return View(equiposPorEvento);
         }

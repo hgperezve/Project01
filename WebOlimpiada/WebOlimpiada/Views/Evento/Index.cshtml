@@ -46,8 +46,8 @@
         
         <td>
             @Html.ActionLink("Actualizar", "Edit", new { id = item.EventoId }) |
-            @Html.ActionLink("Equipamentos", "Index", "EventoEquipamento", new { eventoId = item.EventoId }, new { }) |
-            @Html.ActionLink("Comisarios", "Index", "EventoComisarioView", new { eventoId = item.EventoId }, new { }) |
+            @Html.ActionLink("Equipamentos", "Index", "EventoEquipamento", new { eventoId = item.EventoId, areaId= item.AreaId }, new { }) |
+            @Html.ActionLink("Comisarios", "Index", "EventoComisarioView", new { eventoId = item.EventoId, areaId = item.AreaId }, new { }) |
             @Html.ActionLink("Borrar", "Delete", new { id = item.EventoId })
         </td>
     </tr>
