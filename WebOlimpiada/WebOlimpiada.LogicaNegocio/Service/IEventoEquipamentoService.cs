@@ -14,6 +14,6 @@ namespace WebOlimpiada.LogicaNegocio.Service
         Evento_Equipamento Create(Evento_Equipamento eventoEquipamento);
         Evento_Equipamento GetByIds(decimal eventoId, decimal equipamentoId);
         Evento_Equipamento Update(Evento_Equipamento eventoEquipamento);
-        void Delete(decimal id);
+        void Delete(Evento_Equipamento eventoEquipamento);
     }
 }

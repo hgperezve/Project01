@@ -243,6 +243,7 @@
     <Content Include="Views\EventoEquipamento\Index.cshtml" />
     <Content Include="Views\EventoEquipos\Create.cshtml" />
     <Content Include="Views\EventoEquipos\Edit.cshtml" />
+    <Content Include="Views\EventoEquipos\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

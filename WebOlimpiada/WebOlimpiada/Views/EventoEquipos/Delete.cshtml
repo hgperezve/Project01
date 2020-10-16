@@ -1,0 +1,36 @@
+﻿@model WebOlimpiada.DatosRepositorio.Modelos.Evento_Equipamento
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+<h2>Borrar</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Evento_Equipamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.EventoId)
+        @Html.HiddenFor(model => model.EquipamentoId)
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

@@ -94,22 +94,30 @@ namespace WebOlimpiada.Controllers
         }
 
         // GET: EventoEquipos/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(decimal eventoId, decimal equipamentoId)
         {
-            return View();
+            Evento_Equipamento eventoEquipamento = _eventoEquipamentoService.GetByIds(eventoId, equipamentoId);
+            IList<Equipamento> equipos = _equiposService.GetAll();
+            ViewData["EquiposLista"] = new SelectList(equipos, "EquipamentoId", "Nombre");
+            ViewData["EventoId"] = eventoId;
+            return View(eventoEquipamento);
         }
 
         // POST: EventoEquipos/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete( FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                decimal eventoId = Decimal.Parse(collection["EventoId"].ToString());
+                decimal equipamentoId = Decimal.Parse(collection["EquipamentoId"].ToString());
+                Evento_Equipamento eventoEquipamento = _eventoEquipamentoService.GetByIds(eventoId, equipamentoId);
+                _eventoEquipamentoService.Delete(eventoEquipamento);
+                Evento evento = _eventoService.GetById(eventoId);
+                return RedirectToAction("Index", "Evento", new { areaId = evento.AreaId });
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }

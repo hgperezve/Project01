@@ -64,5 +64,27 @@ namespace WebOlimpiada.DatosRepositorio.Implementacion
                 db.SaveChanges();
             }
         }
+
+        public void Delete<T>(T entity) where T : class
+        {
+            using (OlimpiadaDBEntities db = new OlimpiadaDBEntities())
+            {
+
+                //T entity = db.Set<T>().Find(id);
+                db.Set<T>().Remove(entity);
+                db.SaveChanges();
+            }
+        }
+
+        public void Delete<T>(decimal id1, decimal id2) where T : class
+        {
+            using (OlimpiadaDBEntities db = new OlimpiadaDBEntities())
+            {
+
+                T entity = db.Set<T>().Find(id1,id2);
+                db.Set<T>().Remove(entity);
+                db.SaveChanges();
+            }
+        }
     }
 }

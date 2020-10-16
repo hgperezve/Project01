@@ -30,7 +30,7 @@
         </td>
         <td>
             @Html.ActionLink("Actualizar", "Edit", "EventoEquipos", new { eventoId = item.EventoId, equipamentoId= item.EquipamentoId  }, new { }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", "EventoEquipos", new  { eventoId = item.EventoId, equipamentoId = item.EquipamentoId }, new { })
         </td>
     </tr>
 }

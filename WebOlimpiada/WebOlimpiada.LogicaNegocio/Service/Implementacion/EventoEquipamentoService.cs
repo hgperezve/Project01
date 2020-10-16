@@ -38,9 +38,9 @@ namespace WebOlimpiada.LogicaNegocio.Service.Implementacion
             return _eventoEquipamentoRepositorio.Update<Evento_Equipamento>(eventoEquipamento);
         }
 
-        public void Delete(decimal id)
+        public void Delete(Evento_Equipamento eventoEquipamento)
         {
-            _eventoEquipamentoRepositorio.Delete<Evento_Equipamento>(id);
+            _eventoEquipamentoRepositorio.Delete<Evento_Equipamento>(eventoEquipamento.EventoId, eventoEquipamento.EquipamentoId);
         }
     }
 }
