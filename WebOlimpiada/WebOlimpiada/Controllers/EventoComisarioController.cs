@@ -13,6 +13,7 @@ namespace WebOlimpiada.Controllers
     {
         IEventoComisarioService _eventoComisarioService = new EventoComisarioService();
         IComisarioService _comisarioService = new ComisarioService();
+        IEventoService _eventoService = new EventoService();
         private static decimal pEventoId;
         // GET: EventoComisario/Create
         public ActionResult Create(decimal eventoId)
@@ -36,7 +37,8 @@ namespace WebOlimpiada.Controllers
                 eventoComisario.EventoId = pEventoId;
                 eventoComisario.ComisarioId = Decimal.Parse(collection["ComisarioId"].ToString());
                 _eventoComisarioService.Create(eventoComisario);
-                return RedirectToAction("Index", "EventoComisarioView", new { eventoId = pEventoId });
+                Evento evento = _eventoService.GetById(pEventoId);
+                return RedirectToAction("Index", "EventoComisarioView", new { eventoId = pEventoId, areaId=evento.AreaId });
             }
             catch
             {
@@ -66,7 +68,8 @@ namespace WebOlimpiada.Controllers
                 decimal comisarioId = Decimal.Parse(collection["ComisarioId"].ToString());
                 Evento_Comisario eventoComisario = _eventoComisarioService.GetByIds(eventoId, comisarioId);
                 _eventoComisarioService.Delete(eventoComisario);
-                return RedirectToAction("Index", "EventoComisarioView", new { eventoId = pEventoId });
+                Evento evento = _eventoService.GetById(pEventoId);
+                return RedirectToAction("Index", "EventoComisarioView", new { eventoId = pEventoId , areaId= evento.AreaId});
             }
             catch
             {
