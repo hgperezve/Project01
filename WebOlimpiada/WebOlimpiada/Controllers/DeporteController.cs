@@ -17,7 +17,7 @@ namespace WebOlimpiada.Controllers
         // GET: Deporte
         public ActionResult Index()
         {
-            IList<Deporte> deportes = _deporteService.GetAll();
+            IList<Deporte> deportes = _deporteService.GetAll<Deporte>();
             return View(deportes);
         }
 
@@ -56,7 +56,7 @@ namespace WebOlimpiada.Controllers
         // GET: Deporte/Edit/5
         public ActionResult Edit(Decimal  id)
         {
-            Deporte deporte = _deporteService.GetById(id);
+            Deporte deporte = _deporteService.GetById<Deporte>(id);
             return View(deporte);
         }
 
@@ -67,7 +67,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add update logic here
-                Deporte deporte = _deporteService.GetById(id);
+                Deporte deporte = _deporteService.GetById<Deporte>(id);
                 deporte.Nombre = collection["Nombre"].ToString();
                 _deporteService.Update(deporte);
                 return RedirectToAction("Index");
@@ -81,7 +81,7 @@ namespace WebOlimpiada.Controllers
         // GET: Deporte/Delete/5
         public ActionResult Delete(decimal id)
         {
-            Deporte deporte = _deporteService.GetById(id);
+            Deporte deporte = _deporteService.GetById<Deporte>(id);
             return View(deporte);
         }
 
@@ -93,7 +93,7 @@ namespace WebOlimpiada.Controllers
             {
                 // TODO: Add delete logic here
                 //Deporte deporte = _deporteService.GetById(id);
-                _deporteService.Delete(id);
+                _deporteService.Delete<Deporte>(id);
                 return RedirectToAction("Index");
             }
             catch

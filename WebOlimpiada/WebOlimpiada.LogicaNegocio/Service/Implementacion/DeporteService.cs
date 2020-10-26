@@ -4,42 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebOlimpiada.DatosRepositorio.Implementacion;
+using WebOlimpiada.DatosRepositorio.Interfaz;
 using WebOlimpiada.DatosRepositorio.Modelos;
 
 namespace WebOlimpiada.LogicaNegocio.Service.Implementacion
 {
-    public class DeporteService: IDeporteService
+    public class DeporteService: GenericoService<Deporte, decimal>, IDeporteService
     {
-        private DeporteRepositorio _deporteRepositorio;
+        public IDeporteRepositorio DeporteRepositorio
+        {
+            get { return (IDeporteRepositorio)_genericoRepo; }
+            set { _genericoRepo = value; }
+        }
 
         public DeporteService()
         {
-            _deporteRepositorio = new DeporteRepositorio();
+            DeporteRepositorio = new DeporteRepositorio();
         }
 
-        public IList<Deporte> GetAll()
-        {
-            return _deporteRepositorio.FindAll<Deporte>();
-        }
-
-        public Deporte Create(Deporte deporte)
-        {
-            return _deporteRepositorio.Create<Deporte>(deporte);
-        }
-
-        public Deporte GetById(decimal id)
-        {
-            return _deporteRepositorio.FindById<Deporte>(id);
-        }
-
-        public Deporte Update(Deporte deporte)
-        {
-            return _deporteRepositorio.Update<Deporte>(deporte);
-        }
-
-        public void Delete(decimal id)
-        {
-            _deporteRepositorio.Delete<Deporte>(id);
-        }
     }
 }

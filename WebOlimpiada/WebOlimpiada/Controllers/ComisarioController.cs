@@ -16,7 +16,7 @@ namespace WebOlimpiada.Controllers
         // GET: Comisario
         public ActionResult Index()
         {
-            IList<Comisario> comisarios = _comisarioService.GetAll();
+            IList<Comisario> comisarios = _comisarioService.GetAll<Comisario>();
             return View(comisarios);
         }
 
@@ -56,7 +56,7 @@ namespace WebOlimpiada.Controllers
         // GET: Comisario/Edit/5
         public ActionResult Edit(decimal id)
         {
-            Comisario comisario = _comisarioService.GetById(id);
+            Comisario comisario = _comisarioService.GetById<Comisario>(id);
             return View(comisario);
         }
 
@@ -67,7 +67,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add update logic here
-                Comisario comisario = _comisarioService.GetById(id);
+                Comisario comisario = _comisarioService.GetById<Comisario>(id);
                 comisario.Nombre = collection["Nombre"].ToString();
                 comisario.Tarea = collection["Tarea"].ToString();
                 _comisarioService.Update(comisario);
@@ -82,7 +82,7 @@ namespace WebOlimpiada.Controllers
         // GET: Comisario/Delete/5
         public ActionResult Delete(decimal id)
         {
-            Comisario comisario = _comisarioService.GetById(id);
+            Comisario comisario = _comisarioService.GetById<Comisario>(id);
             return View(comisario);
         }
 
@@ -93,7 +93,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add delete logic here
-                _comisarioService.Delete(id);
+                _comisarioService.Delete<Comisario>(id);
                 return RedirectToAction("Index");
             }
             catch

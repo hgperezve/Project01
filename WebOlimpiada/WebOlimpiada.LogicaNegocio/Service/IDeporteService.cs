@@ -7,12 +7,7 @@ using WebOlimpiada.DatosRepositorio.Modelos;
 
 namespace WebOlimpiada.LogicaNegocio.Service
 {
-    public interface IDeporteService
+    public interface IDeporteService: IGenericoService<Deporte, decimal>
     {
-        IList<Deporte> GetAll();
-        Deporte Create(Deporte deporte);
-        Deporte GetById(decimal id);
-        Deporte Update(Deporte deporte);
-        void Delete(decimal id);
     }
 }

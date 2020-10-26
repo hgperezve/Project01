@@ -4,47 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebOlimpiada.DatosRepositorio.Implementacion;
+using WebOlimpiada.DatosRepositorio.Interfaz;
 using WebOlimpiada.DatosRepositorio.Modelos;
 
 namespace WebOlimpiada.LogicaNegocio.Service.Implementacion
 {
-    public class AreaService: IAreaService
+    public class AreaService : GenericoService<Area, decimal>, IAreaService
     {
-        private AreaRepositorio _areaRepositorio;
+        public IAreaRepositorio AreaRepositorio
+        {
+            get { return (IAreaRepositorio)_genericoRepo; }
+            set { _genericoRepo = value; }
+        }
 
         public AreaService()
         {
-            _areaRepositorio = new AreaRepositorio();
-        }
-
-        public IList<Area> GetAll()
-        {
-            return _areaRepositorio.FindAll();
+            AreaRepositorio = new AreaRepositorio();
         }
 
         public IList<Area> GetByComplejoId(decimal pComplejoId)
         {
-            return _areaRepositorio.FindByComplejoId(pComplejoId);
-        }
-
-        public Area Create(Area area)
-        {
-            return _areaRepositorio.Create(area);
-        }
-
-        public Area GetById(decimal id)
-        {
-            return _areaRepositorio.FindById(id);
-        }
-
-        public Area Update(Area area)
-        {
-            return _areaRepositorio.Update(area);
-        }
-
-        public void Delete(decimal id)
-        {
-            _areaRepositorio.Delete(id);
+            return AreaRepositorio.FindByComplejoId(pComplejoId);
         }
     }
 }

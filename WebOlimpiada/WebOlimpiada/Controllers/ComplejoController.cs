@@ -61,7 +61,7 @@ namespace WebOlimpiada.Controllers
         // GET: Complejo/Edit/5
         public ActionResult Edit(decimal id)
         {
-            Complejo complejo = _ComplejoService.GetById(id);
+            Complejo complejo = _ComplejoService.GetById<Complejo>(id);
             ViewData["pSedeOlimpicaId"] = pSedeOlimpicaId;
             return View(complejo);
         }
@@ -73,7 +73,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add update logic here
-                Complejo complejo = _ComplejoService.GetById(id);
+                Complejo complejo = _ComplejoService.GetById<Complejo>(id);
                 complejo.SedeOlimpicaId = pSedeOlimpicaId;
                 complejo.Localizacion = collection["Localizacion"].ToString();
                 complejo.Nombre = collection["Nombre"].ToString();
@@ -93,7 +93,7 @@ namespace WebOlimpiada.Controllers
         // GET: Complejo/Delete/5
         public ActionResult Delete(decimal id)
         {
-            Complejo complejo = _ComplejoService.GetById(id);
+            Complejo complejo = _ComplejoService.GetById<Complejo>(id);
             ViewData["pSedeOlimpicaId"] = pSedeOlimpicaId;
             return View(complejo);
         }
@@ -105,7 +105,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add delete logic here
-                _ComplejoService.Delete(id);
+                _ComplejoService.Delete<Complejo>(id);
                 return RedirectToAction("Index", new { sedeOlimpicaId = pSedeOlimpicaId });
             }
             catch

@@ -7,13 +7,13 @@ using WebOlimpiada.DatosRepositorio.Modelos;
 
 namespace WebOlimpiada.LogicaNegocio.Service
 {
-    public interface IComisarioService
+    public interface IComisarioService : IGenericoService<Comisario, decimal>
     {
-        IList<Comisario> GetAll();
-        Comisario Create(Comisario comisario);
-        Comisario GetById(decimal id);
-        Comisario Update(Comisario comisario);
-        void Delete(decimal id);
+        //IList<Comisario> GetAll();
+        //Comisario Create(Comisario comisario);
+        //Comisario GetById(decimal id);
+        //Comisario Update(Comisario comisario);
+        //void Delete(decimal id);
         IList<EventoComisario_View> GetByEventoId(decimal eventoId);
     }
 }

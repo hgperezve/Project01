@@ -4,11 +4,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using WebOlimpiada.DatosRepositorio.Interfaz;
 using WebOlimpiada.DatosRepositorio.Modelos;
 
 namespace WebOlimpiada.DatosRepositorio.Implementacion
 {
-    public abstract class GenericoRepositorio<T, IdT> 
+    public abstract class GenericoRepositorio<T, IdT> :IGenericoRepositorio<T, IdT>
     {
 
         public IList<T> FindAll<T>() where T : class
@@ -54,7 +55,7 @@ namespace WebOlimpiada.DatosRepositorio.Implementacion
             return objeto;
         }
 
-        public void Delete<T>(decimal id) where T : class
+        public void Delete<T>(IdT id) where T : class
         {
             using (OlimpiadaDBEntities db = new OlimpiadaDBEntities())
             {

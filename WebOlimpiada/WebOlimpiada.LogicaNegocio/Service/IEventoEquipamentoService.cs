@@ -8,12 +8,12 @@ using WebOlimpiada.Dominio45.EntidadesCompuestas;
 
 namespace WebOlimpiada.LogicaNegocio.Service
 {
-    public interface IEventoEquipamentoService
+    public interface IEventoEquipamentoService: IGenericoService<Evento_Equipamento, decimal>
     {
         //IList<EventoEquipamento> GetAll();
-        Evento_Equipamento Create(Evento_Equipamento eventoEquipamento);
+        //Evento_Equipamento Create(Evento_Equipamento eventoEquipamento);
         Evento_Equipamento GetByIds(decimal eventoId, decimal equipamentoId);
-        Evento_Equipamento Update(Evento_Equipamento eventoEquipamento);
-        void Delete(Evento_Equipamento eventoEquipamento);
+        //Evento_Equipamento Update(Evento_Equipamento eventoEquipamento);
+        //void Delete(Evento_Equipamento eventoEquipamento);
     }
 }

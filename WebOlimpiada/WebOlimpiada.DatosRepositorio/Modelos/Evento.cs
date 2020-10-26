@@ -15,8 +15,8 @@ namespace WebOlimpiada.DatosRepositorio.Modelos
     public partial class Evento
     {
         public decimal EventoId { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
-        public Nullable<System.TimeSpan> Duracion { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public System.TimeSpan Duracion { get; set; }
         public decimal NumeroParticipantes { get; set; }
         public decimal NumeroComisarios { get; set; }
         public decimal AreaId { get; set; }

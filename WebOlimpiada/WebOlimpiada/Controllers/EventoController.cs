@@ -20,7 +20,7 @@ namespace WebOlimpiada.Controllers
         public ActionResult Index(decimal areaId)
         {
             pAreaId = areaId;
-            Area area = _areaService.GetById(areaId);
+            Area area = _areaService.GetById<Area>(areaId);
             
             ViewData["AreaNombre"] = area.Nombre;
             IList<Evento> eventos = _eventoService.GetByAreaId(areaId);
@@ -38,7 +38,7 @@ namespace WebOlimpiada.Controllers
         {
             Evento evento = new Evento();
             evento.AreaId = pAreaId;
-            IList<Deporte> deportes = _deporteService.GetAll();
+            IList<Deporte> deportes = _deporteService.GetAll<Deporte>();
             ViewData["DeporteLista"] = new SelectList(deportes, "DeporteId", "Nombre");
             return View(evento);
         }
@@ -74,7 +74,7 @@ namespace WebOlimpiada.Controllers
         public ActionResult Edit(decimal id)
         {
             Evento evento = _eventoService.GetById(id);
-            IList<Deporte> deportes = _deporteService.GetAll();
+            IList<Deporte> deportes = _deporteService.GetAll<Deporte>();
             ViewData["DeporteLista"] = new SelectList(deportes, "DeporteId", "Nombre");
             return View(evento);
         }

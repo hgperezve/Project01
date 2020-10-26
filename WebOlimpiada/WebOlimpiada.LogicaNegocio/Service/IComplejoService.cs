@@ -7,13 +7,13 @@ using WebOlimpiada.DatosRepositorio.Modelos;
 
 namespace WebOlimpiada.LogicaNegocio.Service
 {
-    public interface IComplejoService
+    public interface IComplejoService : IGenericoService<Complejo, decimal>
     {
-        IList<Complejo> GetAll();
+        //IList<Complejo> GetAll();
         IList<Complejo> GetBySedeOlimpicaId(decimal pSedeOlimpicaId);
-        Complejo Create(Complejo complejo);
-        Complejo GetById(decimal id);
-        Complejo Update(Complejo complejo);
-        void Delete(decimal id);
+        //Complejo Create(Complejo complejo);
+        //Complejo GetById(decimal id);
+        //Complejo Update(Complejo complejo);
+        //void Delete(decimal id);
     }
 }

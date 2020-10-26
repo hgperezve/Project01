@@ -35,7 +35,7 @@ namespace WebOlimpiada.DatosRepositorio.Modelos
         public virtual DbSet<Deporte> Deporte { get; set; }
         public virtual DbSet<Equipamento> Equipamento { get; set; }
         public virtual DbSet<Evento> Evento { get; set; }
-        public virtual DbSet<EventoEquipamento_View> EventoEquipamento_View { get; set; }
         public virtual DbSet<EventoComisario_View> EventoComisario_View { get; set; }
+        public virtual DbSet<EventoEquipamento_View> EventoEquipamento_View { get; set; }
     }
 }

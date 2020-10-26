@@ -14,6 +14,7 @@ namespace WebOlimpiada.DatosRepositorio.Modelos
     
     public partial class EventoEquipamento_View
     {
+        public Nullable<System.Guid> Id { get; set; }
         public decimal EquipamentoId { get; set; }
         public decimal EventoId { get; set; }
         public string Nombre { get; set; }

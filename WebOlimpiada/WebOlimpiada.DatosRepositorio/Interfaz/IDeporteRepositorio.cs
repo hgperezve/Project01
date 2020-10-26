@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WebOlimpiada.DatosRepositorio.Modelos;
 
-namespace WebOlimpiada.LogicaNegocio.Service
+namespace WebOlimpiada.DatosRepositorio.Interfaz
 {
-    public interface IAreaService: IGenericoService<Area, decimal>
+    public interface IDeporteRepositorio : IGenericoRepositorio<Deporte, decimal>
     {
-        IList<Area> GetByComplejoId(decimal pComplejoId);
     }
 }

@@ -16,14 +16,20 @@ namespace WebOlimpiada.Controllers
         IEventoService _eventoService = new EventoService();
         private static decimal pEventoId;
 
+        public void SetEnttyDataToForm(decimal eventoId)
+        {
+            //IList<Equipamento> equipos = _equiposService.GetAll<Equipamento>();
+            IList<Equipamento> equipos = _equiposService.GetExcludeEventoId(eventoId);
+            ViewData["EquiposLista"] = new SelectList(equipos, "EquipamentoId", "Nombre");
+        }
+
         // GET: EventoEquipos/Create
         public ActionResult Create(decimal eventoId)
         {
             Evento_Equipamento eventoEquipamento = new Evento_Equipamento();
             eventoEquipamento.EventoId = eventoId;
             pEventoId = eventoId;
-            IList<Equipamento> equipos = _equiposService.GetAll();
-            ViewData["EquiposLista"] = new SelectList(equipos, "EquipamentoId", "Nombre");
+            SetEnttyDataToForm(eventoId);
             ViewData["EventoId"] = eventoId;
             return View(eventoEquipamento);
         }
@@ -43,8 +49,9 @@ namespace WebOlimpiada.Controllers
                 Evento evento = _eventoService.GetById(pEventoId);
                 return RedirectToAction("Index","Evento", new { areaId = evento.AreaId });
             }
-            catch
+            catch(Exception ex)
             {
+                SetEnttyDataToForm(pEventoId);
                 return View();
             }
         }
@@ -53,7 +60,7 @@ namespace WebOlimpiada.Controllers
         public ActionResult Edit(decimal eventoId, decimal equipamentoId)
         {
             Evento_Equipamento eventoEquipamento = _eventoEquipamentoService.GetByIds(eventoId, equipamentoId);
-            IList<Equipamento> equipos = _equiposService.GetAll();
+            IList<Equipamento> equipos = _equiposService.GetAll<Equipamento>();
             ViewData["EquiposLista"] = new SelectList(equipos, "EquipamentoId", "Nombre");
             ViewData["EventoId"] = eventoId;
             return View(eventoEquipamento);
@@ -86,7 +93,7 @@ namespace WebOlimpiada.Controllers
         public ActionResult Delete(decimal eventoId, decimal equipamentoId)
         {
             Evento_Equipamento eventoEquipamento = _eventoEquipamentoService.GetByIds(eventoId, equipamentoId);
-            IList<Equipamento> equipos = _equiposService.GetAll();
+            IList<Equipamento> equipos = _equiposService.GetAll<Equipamento>();
             ViewData["EquiposLista"] = new SelectList(equipos, "EquipamentoId", "Nombre");
             ViewData["EventoId"] = eventoId;
             return View(eventoEquipamento);

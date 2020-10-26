@@ -7,14 +7,9 @@ using WebOlimpiada.DatosRepositorio.Modelos;
 
 namespace WebOlimpiada.LogicaNegocio.Service
 {
-    public interface IEquipamentoService
+    public interface IEquipamentoService: IGenericoService<Equipamento, decimal>
     {
-        IList<Equipamento> GetAll();
-        Equipamento Create(Equipamento equpamento);
-        Equipamento GetById(decimal id);
-        Equipamento Update(Equipamento equipamento);
-        void Delete(decimal id);
-
         IList<EventoEquipamento_View> GetByEventoIdView(decimal eventoId);
+        IList<Equipamento> GetExcludeEventoId(decimal eventoId);
     }
 }

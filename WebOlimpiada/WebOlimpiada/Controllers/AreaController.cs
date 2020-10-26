@@ -24,7 +24,7 @@ namespace WebOlimpiada.Controllers
             pComplejoId = complejoId;
             bool estaHabilitadoCrear = true;
             IList<Area> areas = _AreaService.GetByComplejoId(complejoId);
-            Complejo complejo = _ComplejoService.GetById(complejoId);
+            Complejo complejo = _ComplejoService.GetById<Complejo>(complejoId);
             if (complejo != null) {
                 if (complejo.Tipo.Equals("Unico") && areas.Count==1) {
                     estaHabilitadoCrear = false;
@@ -80,7 +80,7 @@ namespace WebOlimpiada.Controllers
         // GET: Area/Edit/5
         public ActionResult Edit(decimal id)
         {
-            Area area = _AreaService.GetById(id);
+            Area area = _AreaService.GetById<Area>(id);
             return View(area);
         }
 
@@ -91,7 +91,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add update logic here
-                Area area = _AreaService.GetById(id);
+                Area area = _AreaService.GetById<Area>(id);
                 area.AreaOcupada = Convert.ToDecimal(collection["AreaOcupada"]);
                 area.IndicadorLocalizacion = (collection["IndicadorLocalizacion"]).ToString();
                 area.Nombre = (collection["Nombre"]).ToString();
@@ -108,7 +108,7 @@ namespace WebOlimpiada.Controllers
         // GET: Area/Delete/5
         public ActionResult Delete(decimal id)
         {
-            Area area = _AreaService.GetById(id);
+            Area area = _AreaService.GetById<Area>(id);
             return View(area);
         }
 
@@ -119,7 +119,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add delete logic here
-                _AreaService.Delete(id);
+                _AreaService.Delete<Area>(id);
                 return RedirectToAction("Index", new { complejoId = pComplejoId });
             }
             catch

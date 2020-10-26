@@ -4,47 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebOlimpiada.DatosRepositorio.Implementacion;
+using WebOlimpiada.DatosRepositorio.Interfaz;
 using WebOlimpiada.DatosRepositorio.Modelos;
 
 namespace WebOlimpiada.LogicaNegocio.Service.Implementacion
 {
-   public  class ComisarioService: IComisarioService
+   public  class ComisarioService: GenericoService<Comisario, decimal>, IComisarioService
     {
-        private ComisarioRepositorio _comisarioRepositorio;
+        public IComisarioRepositorio ComisarioRepositorio
+        {
+            get { return (IComisarioRepositorio)_genericoRepo; }
+            set { _genericoRepo = value; }
+        }
 
         public ComisarioService()
         {
-            _comisarioRepositorio = new ComisarioRepositorio();
-        }
-
-        public IList<Comisario> GetAll()
-        {
-            return _comisarioRepositorio.FindAll<Comisario>();
-        }
-
-        public Comisario Create(Comisario comisario)
-        {
-            return _comisarioRepositorio.Create<Comisario>(comisario);
-        }
-
-        public Comisario GetById(decimal id)
-        {
-            return _comisarioRepositorio.FindById<Comisario>(id);
-        }
-
-        public Comisario Update(Comisario comisario)
-        {
-            return _comisarioRepositorio.Update<Comisario>(comisario);
-        }
-
-        public void Delete(decimal id)
-        {
-            _comisarioRepositorio.Delete<Comisario>(id);
+            ComisarioRepositorio = new ComisarioRepositorio();
         }
 
         public IList<EventoComisario_View> GetByEventoId(decimal eventoId)
         {
-            return _comisarioRepositorio.FindByEventoId(eventoId);
+            return ComisarioRepositorio.FindByEventoId(eventoId);
         }
 
    }

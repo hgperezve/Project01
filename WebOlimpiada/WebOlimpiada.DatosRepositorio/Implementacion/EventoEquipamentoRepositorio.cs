@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebOlimpiada.DatosRepositorio.Interfaz;
 using WebOlimpiada.DatosRepositorio.Modelos;
 using WebOlimpiada.Dominio45.EntidadesCompuestas;
 
 namespace WebOlimpiada.DatosRepositorio.Implementacion
 {
-    public class EventoEquipamentoRepositorio :GenericoRepositorio<Evento_Equipamento, decimal>
+    public class EventoEquipamentoRepositorio :GenericoRepositorio<Evento_Equipamento, decimal>, IEventoEquipamentoRepositorio
     {
         public Evento_Equipamento FindByIds(decimal eventoId, decimal equipamentoId)
         {

@@ -68,6 +68,14 @@
     <Compile Include="Implementacion\GenericoRepositorio.cs" />
     <Compile Include="Implementacion\SedeOlimpicaRepositorio.cs" />
     <Compile Include="Implementacion\UsuarioRepositorio.cs" />
+    <Compile Include="Interfaz\IAreaRepositorio.cs" />
+    <Compile Include="Interfaz\IComisarioRepositorio.cs" />
+    <Compile Include="Interfaz\IComplejoRepositorio.cs" />
+    <Compile Include="Interfaz\IDeporteRepositorio.cs" />
+    <Compile Include="Interfaz\IEquipamentoRepositorio.cs" />
+    <Compile Include="Interfaz\IEventoComisarioRepositorio.cs" />
+    <Compile Include="Interfaz\IEventoEquipamentoRepositorio.cs" />
+    <Compile Include="Interfaz\IGenericoRepositorio.cs" />
     <Compile Include="Modelos\Area.cs">
       <DependentUpon>DBOlimpiada.tt</DependentUpon>
     </Compile>

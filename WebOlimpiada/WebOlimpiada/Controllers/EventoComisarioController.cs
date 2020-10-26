@@ -21,7 +21,7 @@ namespace WebOlimpiada.Controllers
             pEventoId = eventoId;
             Evento_Comisario eventoComisario = new Evento_Comisario();
             eventoComisario.EventoId = eventoId;
-            IList<Comisario> comisarios = _comisarioService.GetAll();
+            IList<Comisario> comisarios = _comisarioService.GetAll<Comisario>();
             ViewData["ComisarioLista"] = new SelectList(comisarios, "ComisarioId", "Nombre");
             return View(eventoComisario);
         }
@@ -50,7 +50,7 @@ namespace WebOlimpiada.Controllers
         public ActionResult Delete(decimal eventoId, decimal comisarioId)
         {
             Evento_Comisario eventoComisario = _eventoComisarioService.GetByIds(eventoId, comisarioId);
-            Comisario comisario = _comisarioService.GetById(comisarioId);
+            Comisario comisario = _comisarioService.GetById<Comisario>(comisarioId);
             ViewData["EventoId"] = eventoId;
             ViewData["ComisarioId"] = comisarioId;
             ViewData["ComisarioNombre"] = comisario.Nombre;

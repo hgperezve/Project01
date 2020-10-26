@@ -16,7 +16,7 @@ namespace WebOlimpiada.Controllers
         // GET: Equipamento
         public ActionResult Index()
         {
-            IList<Equipamento> equipamentoList = _equipamentoService.GetAll();
+            IList<Equipamento> equipamentoList = _equipamentoService.GetAll<Equipamento>();
             return View(equipamentoList);
         }
 
@@ -56,7 +56,7 @@ namespace WebOlimpiada.Controllers
         // GET: Equipamento/Edit/5
         public ActionResult Edit(decimal id)
         {
-            Equipamento equipamento = _equipamentoService.GetById(id);
+            Equipamento equipamento = _equipamentoService.GetById<Equipamento>(id);
             return View(equipamento);
         }
 
@@ -67,7 +67,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add update logic here
-                Equipamento equipamento = _equipamentoService.GetById(id);
+                Equipamento equipamento = _equipamentoService.GetById<Equipamento>(id);
                 equipamento.Nombre = collection["Nombre"].ToString();
                 _equipamentoService.Update(equipamento);
                 return RedirectToAction("Index");
@@ -81,7 +81,7 @@ namespace WebOlimpiada.Controllers
         // GET: Equipamento/Delete/5
         public ActionResult Delete(decimal id)
         {
-            Equipamento equipamento = _equipamentoService.GetById(id);
+            Equipamento equipamento = _equipamentoService.GetById<Equipamento>(id);
             return View(equipamento);
         }
 
@@ -92,7 +92,7 @@ namespace WebOlimpiada.Controllers
             try
             {
                 // TODO: Add delete logic here
-                _equipamentoService.Delete(id);
+                _equipamentoService.Delete<Equipamento>(id);
                 return RedirectToAction("Index");
             }
             catch
